@@ -33,5 +33,30 @@ Public Class SerializationManager(Of t As Class)
         End Try
     End Sub
 
+Public Shared Function JsonSerialization(ByVal value As t, Optional Indented As Boolean = True) as String
+        Try
 
+            Dim options As New JsonSerializerOptions With {.WriteIndented = Indented}
+            Dim jsonString As String = JsonSerializer.Serialize(value, options)
+            Return jsonString
+
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Function
+
+Public Shared Function JsonDeSerialization(ByVal value As String) As t
+
+        Try
+
+            Dim jsonString As String = obj
+            Dim obj As t = JsonSerializer.Deserialize(Of t)(jsonString)
+            Return obj
+
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+
+    End Function
+            
 End Class
