@@ -49,7 +49,7 @@ Public Shared Function JsonDeSerialization(ByVal value As String) As t
 
         Try
 
-            Dim jsonString As String = obj
+            Dim jsonString As String = value
             Dim obj As t = JsonSerializer.Deserialize(Of t)(jsonString)
             Return obj
 
